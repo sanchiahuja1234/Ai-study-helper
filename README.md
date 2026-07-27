@@ -31,13 +31,13 @@ The app uses AI-inspired text summarization to generate a short summary from the
 ## Screenshots
 
 ### 1. Home Page
-![Home Page](home.jpg)
+![Home Page](file_0000a25882308afb7231e0bfa9b)
 
 ### 2. Summary Generated
-![Summary Generated](summary.jpg)
+![Summary Generated](IMG-20260727-WA0060.jpg)
 
 ### 3. GitHub Repository
-![GitHub Repository](github.jpg)
+![GitHub Repository](file_00000004eec8230acfd98f2d9d6419)
 
 ## How to Run
 1. Open the live URL.
