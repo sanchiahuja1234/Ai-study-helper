@@ -36,8 +36,8 @@ The app uses AI-inspired text summarization to generate a short summary from the
 ### 2. Summary Generated
 ![Summary Generated](IMG-20260727-WA0060.jpg)
 
-###3. GitHub Repository
-![GitHubRespository](file_000004eec8230acfd98f2d9d64194.jpg)
+### 3. GitHub Repository
+![GitHub Repository](3.jpg)
 
 
 ## How to Run
