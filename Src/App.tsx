@@ -1,4 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';   import { useState } from "react";
+   import { GoogleGenerativeAI } from "@google/generative-ai";
+
+   export default function App() {
+     const [subject, setSubject] = useState("");
+     const [topic, setTopic] = useState("");
+     const [quiz, setQuiz] = useState("");
+
+     const generateQuiz = async () => {
+       const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
+       const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+       const prompt = `Make 5 MCQs with answers on ${topic} from ${subject}`;
+       const result = await model.generateContent(prompt);
+       setQuiz(result.response.text());
+     }
+
+     return (
+       <div style={{padding:20}}>
+         <h1>Quiz Generator AI</h1>
+         <input placeholder="Subject" value={subject} onChange={e=>setSubject(e.target.value)}/><br/><br/>
+         <input placeholder="Topic" value={topic} onChange={e=>setTopic(e.target.value)}/><br/><br/>
+         <button onClick={generateQuiz}>Generate Quiz</button>
+         <pre>{quiz}</pre>
+       </div>
+     )
+   }
 import { Header } from './components/Header';
 import { QuizForm } from './components/QuizForm';
 import { QuizDisplay } from './components/QuizDisplay';
@@ -152,37 +177,5 @@ export default function App() {
         {isLoading && (
           <div className="bg-white rounded-2xl border-slate-200 p-8 text-center space-y-4 animate-pulse shadow-sm">
             <div className="w-12 h-12 rounded-2xl bg-indigo-100 flex items-center justify-center text-indigo-600 mx-auto">
-              <BrainCircuit className="w-6 h-6 animate-spin" />
-            </div>
-            <div>
-              <h3 className="text-lg font-bold text-slate-900">Generating Your Study Quiz...</h3>
-              <p className="text-xs text-slate-500 mt-1">
-                Creating 5 multiple choice questions with explanations and 2 short questions for <span className="font-semibold text-indigo-600">{topic || subject}</span>.
-              </p>
-            </div>
-          </div>
-        )}
-      </main>
-
-      <QuizHistory
-        isOpen={isHistoryOpen}
-        onClose={() => setIsHistoryOpen(false)}
-        history={history}
-        onSelectQuiz={handleSelectHistoryQuiz}
-        onClearHistory={handleClearHistory}
-        onDeleteQuiz={handleDeleteHistoryQuiz}
-      />
-
-      <footer className="border-t border-slate-200/80 bg-white py-6 text-center text-xs text-slate-500">
-        <div className="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <div className="flex items-center space-x-1.5 font-medium">
-            <BookOpen className="w-4 h-4 text-indigo-600" />
-            <span>AI Study Helper</span>
-            <span>• Powered by Gemini AI</span>
-          </div>
-          <p>© {new Date().getFullYear()} AI Study Helper. Ready for mobile and desktop study.</p>
-        </div>
-      </footer>
-    </div>
-  );
-  }
+              <BrainCircuit className="w-6 h-6 animate-spi
+      
